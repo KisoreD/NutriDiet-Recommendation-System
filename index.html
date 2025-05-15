@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NutriDietFlow - Personalized Nutrition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <style>
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-top: 0;
+      margin-left: 2px;
+    }
+    .myimg {
+      width: 50px;
+      height: 50px;
+    }
+    .title-text {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      font-size: 4rem;
+      color: #791682;
+    }
+  </style>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7f1e74 !important;">
+      <div class="container-fluid">
+        <div class="logo">
+          <img class="myimg" src="{{url_for('static',filename='Project logo.png')}}" alt="logo">
+        </div>
+        <a class="navbar-brand" href="#" style="font-weight: bold;">Personalized Nutrition</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+          </ul>
+	</div>
+      </div>
+    </nav>
+
+    <h1 class="text-center"><span class="title-text">NutriDietFlow</span></h1>
+
+    <div class="container mt-4 my-4" style="background-color: #E6D0F2 !important; border-radius:0 ; padding: 60px 140px 60px 180px; width: 90%; max-width: 800px; margin: 0px auto; height:auto ; display: flex; flex-direction: column; z-index: 1; align-items: center;">
+      <form action="/predict" method="post">
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="age">Enter Age (15-100)</label>
+              <input type="number" id="age" class="form-control w-75" name="Age" placeholder="Age eg: 18, 21, 25" min="15" max="100" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="gender">Select Gender</label>
+              <select id="gender" class="form-control w-75" name="Gender" required>
+                <option value="">Choose Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+
+         
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="weight">Enter Weight (30-200 kg)</label>
+              <input type="number" id="weight" class="form-control w-75" name="Weight" placeholder="Weight in kg" min="30" max="200" required>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="height">Enter Height (120-220 cm)</label>
+              <input type="number" id="height" class="form-control w-75" name="Height" placeholder="Height in cm" min="120" max="220" required>
+            </div>
+          </div>
+
+        
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="diet_preference">Select Diet Preference</label>
+              <select id="diet_preference" class="form-control w-75" name="Diet_Preference" required>
+                <option value="">Choose Diet Preference</option>
+                <option value="Non-Vegetarian">Non-Vegetarian</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Plant-Based">Plant-Based</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Keto">Keto</option>
+                <option value="Paleo">Paleo</option>
+                <option value="Low-Carb">Low-Carb</option>
+                <option value="Gluten-Free">Gluten-Free</option>
+                <option value="Pescatarian">Pescatarian</option>
+                <option value="Flexitarian">Flexitarian</option>
+                <option value="High-Protein">High-Protein</option>
+                <option value="DASH">DASH</option>
+                <option value="South Asian">South Asian</option>
+                <option value="East Asian">East Asian</option>
+                <option value="Raw Vegan">Raw Vegan</option>
+                <option value="Halal">Halal</option>
+                <option value="Kosher">Kosher</option>
+                <option value="Low-FODMAP">Low-FODMAP</option>
+                <option value="Mediterranean-Vegetarian">Mediterranean-Vegetarian</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="activity_level">Select Activity Level</label>
+              <select id="activity_level" class="form-control w-75" name="Activity_Level" required>
+                <option value="">Choose Activity Level</option>
+                <option value="Sedentary">Sedentary</option>
+                <option value="Light">Light</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Active">Active</option>
+                <option value="Very Active">Very Active</option>
+              </select>
+            </div>
+          </div>
+
+         
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="weekly_activity">Weekly Activity Days (0-7)</label>
+              <input type="number" id="weekly_activity" class="form-control w-75" name="Weekly_Activity_Days" placeholder="Active days per week" min="0" max="7" required>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="disease">Select Medical Condition</label>
+              <select id="disease" class="form-control w-75" name="Disease" required>
+                <option value="">Choose Medical Condition</option>
+                <option value="None">None</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Hypertension">Hypertension</option>
+                <option value="Heart Disease">Heart Disease</option>
+                <option value="GERD">GERD</option>
+                <option value="IBS">IBS</option>
+                <option value="Celiac">Celiac</option>
+                <option value="Obesity">Obesity</option>
+                <option value="Thyroid">Thyroid</option>
+                <option value="Iron Deficiency">Iron Deficiency</option>
+                <option value="B12 Deficiency">B12 Deficiency</option>
+                <option value="Food Allergies">Food Allergies</option>
+              </select>
+            </div>
+          </div>
+
+        
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="food_allergies">Select Food Allergies</label>
+              <select id="food_allergies" class="form-control w-75" name="Food_Allergies" required>
+                <option value="">Choose Food Allergies</option>
+                <option value="None">None</option>
+                <option value="Peanuts">Peanuts</option>
+                <option value="Tree Nuts">Tree Nuts</option>
+                <option value="Milk">Milk</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Soy">Soy</option>
+                <option value="Fish">Fish</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Multiple">Multiple</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="form-group">
+              <label for="health_goal">Select Health Goal</label>
+              <select id="health_goal" class="form-control w-75" name="Health_Goal" required>
+                <option value="">Choose Health Goal</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Weight Gain">Weight Gain</option>
+                <option value="Muscle Gain">Muscle Gain</option>
+                <option value="Better Health">Better Health</option>
+                <option value="Athletic Performance">Athletic Performance</option>
+              </select>
+            </div>
+          </div>
+
+         
+          <div class="col-12 mt-4 mb-4 text-center">
+            <button type="submit" class="btn btn-success" style="background: #65e09b;">Get Suggestions</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    {%if calories%}
+      <h1 id="aiSuggestions"class="text-center mt-4 my-4"> My AI Suggestions</h1>
+      <div class="container">
+        <div class="result-container">
+          <div style="display: flex; justify-content: space-between; width: 100%; padding: 0 20px;">
+      
+          <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#NutrientsModal" style="padding:4px; margin:5px 40px 5px 0; font-size:20px;font-weight:bold;width:140px;border-radius: 5px;background: #4c8c4a;color: #f0f4f0">  Nutrients Intake </button>
+          <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#MealSuggestionsModal" style="padding:4px; margin:5px 40px 5px 0; font-size:20px;font-weight:bold;width:140px;border-radius: 5px;background: #4c8c4a;color: #f0f4f0">  Meal Suggestions </button>
+          </div>
+        </div>
+      </div>
+    <script>
+    window.onload = function() {
+      document.getElementById('aiSuggestions').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+    {% endif %}
+    
+    <div class="modal" id="NutrientsModal" tabindex="-1" aria-labelledby="NutrientsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background: rgb(224, 112, 20); color:white;" >
+            <h5 class="modal-title" id="NutrientsModalLabel" >Nutrients Intake Suggestion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="background: #f1cb8b;color:green;"
+               {% if nutrient_info %}
+               {% for key, value in nutrient_info.items() %}
+               {{ value | safe }}
+               {% endfor %}
+               {% endif %}>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="MealSuggestionsModal" tabindex="-1" aria-labelledby="MealSuggestionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background: rgb(224, 112, 20); color:white;" >
+            <h5 class="modal-title" id="MealSuggestionsModalLabel" >Meals Suggestion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="background: #f1cb8b;color:green;"
+               {% if nutrient_info %}
+               {% for key, value in meal_suggestions.items() %}
+               {{ value | safe }}
+               {% endfor %}
+               {% endif %} >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  </body>
+</html>
